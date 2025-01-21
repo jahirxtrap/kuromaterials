@@ -1,0 +1,20 @@
+{
+  "block.kuromaterials.zurite_block": "Bloque de zurita",
+  "block.kuromaterials.anchor_stone": "Piedra de anclaje",
+  "item.kuromaterials.zurite_ingot": "Lingote de zurita",
+  "item.kuromaterials.zurite_sword": "Espada de zurita",
+  "item.kuromaterials.zurite_pickaxe": "Pico de zurita",
+  "item.kuromaterials.zurite_axe": "Hacha de zurita",
+  "item.kuromaterials.zurite_shovel": "Pala de zurita",
+  "item.kuromaterials.zurite_hoe": "Azada de zurita",
+  "item.kuromaterials.zurite_boots": "Botas de zurita",
+  "item.kuromaterials.zurite_chestplate": "Peto de zurita",
+  "item.kuromaterials.zurite_helmet": "Casco de zurita",
+  "item.kuromaterials.zurite_leggings": "Grebas de zurita",
+  "item.kuromaterials.traveler_relic_fragment": "Fragmento de reliquia del viajero",
+  "item.kuromaterials.traveler_relic": "Reliquia del viajero",
+  "item.kuromaterials.link_relic": "Reliquia de enlace",
+  "itemGroup.kuromaterials.tab_kuromaterials": "Kuro Materials",
+  "kuromaterials.config.title": "Kuro Materials",
+  "kuromaterials.link_relic.linked": "enlazado/a"
+}

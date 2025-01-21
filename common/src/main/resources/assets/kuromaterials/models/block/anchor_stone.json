@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "kuromaterials:block/anchor_stone_top",
+    "side": "kuromaterials:block/anchor_stone_side"
+  }
+}

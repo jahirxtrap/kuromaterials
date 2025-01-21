@@ -1,0 +1,20 @@
+{
+  "block.kuromaterials.zurite_block": "Zurite Block",
+  "block.kuromaterials.anchor_stone": "Anchor Stone",
+  "item.kuromaterials.zurite_ingot": "Zurite Ingot",
+  "item.kuromaterials.zurite_sword": "Zurite Sword",
+  "item.kuromaterials.zurite_pickaxe": "Zurite Pickaxe",
+  "item.kuromaterials.zurite_axe": "Zurite Axe",
+  "item.kuromaterials.zurite_shovel": "Zurite Shovel",
+  "item.kuromaterials.zurite_hoe": "Zurite Hoe",
+  "item.kuromaterials.zurite_boots": "Zurite Boots",
+  "item.kuromaterials.zurite_chestplate": "Zurite Chestplate",
+  "item.kuromaterials.zurite_helmet": "Zurite Helmet",
+  "item.kuromaterials.zurite_leggings": "Zurite Leggings",
+  "item.kuromaterials.traveler_relic_fragment": "Traveler's Stone Fragment",
+  "item.kuromaterials.traveler_relic": "Traveler's Stone",
+  "item.kuromaterials.link_relic": "Link Stone",
+  "itemGroup.kuromaterials.tab_kuromaterials": "Kuro Materials",
+  "kuromaterials.config.title": "Kuro Materials",
+  "kuromaterials.link_relic.linked": "linked"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:iron_boots"
+  },
+  "addition": {
+    "item": "kuromaterials:zurite_ingot"
+  },
+  "result": {
+    "item": "kuromaterials:zurite_boots"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BIB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:polished_blackstone"
+    },
+    "I": {
+      "item": "kuromaterials:zurite_ingot"
+    }
+  },
+  "result": {
+    "item": "kuromaterials:anchor_stone",
+    "count": 1
+  }
+}

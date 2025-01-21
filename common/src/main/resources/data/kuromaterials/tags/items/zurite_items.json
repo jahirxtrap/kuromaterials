@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "kuromaterials:zurite_sword",
+    "kuromaterials:zurite_pickaxe",
+    "kuromaterials:zurite_axe",
+    "kuromaterials:zurite_shovel",
+    "kuromaterials:zurite_hoe",
+    "kuromaterials:zurite_helmet",
+    "kuromaterials:zurite_chestplate",
+    "kuromaterials:zurite_leggings",
+    "kuromaterials:zurite_boots"
+  ]
+}
