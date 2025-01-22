@@ -1,12 +1,12 @@
 package com.jahirtrap.kuromaterials.init;
 
 import com.jahirtrap.kuromaterials.item.BaseArmorItem;
-import com.jahirtrap.kuromaterials.item.BaseItem;
+import com.jahirtrap.kuromaterials.item.BaseSmithingTemplateItem;
 import com.jahirtrap.kuromaterials.item.LinkRelicItem;
 import com.jahirtrap.kuromaterials.item.TravelerRelicItem;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -22,14 +22,14 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static com.jahirtrap.kuromaterials.KuroMaterialsMod.MODID;
-import static com.jahirtrap.kuromaterials.init.ModTab.TAB_KURO_MATERIALS;
 
 public class ModContent {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registry.BLOCK_REGISTRY, MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registry.ITEM_REGISTRY, MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, MODID);
 
-    public static final RegistryObject<Item> ZURITE_INGOT = registerItem("zurite_ingot", () -> new BaseItem(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ZURITE_INGOT = registerItem("zurite_ingot", () -> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Block> ZURITE_BLOCK = registerBlock("zurite_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties().fireResistant());
+    public static final RegistryObject<Item> ZURITE_UPGRADE_SMITHING_TEMPLATE = registerItem("zurite_upgrade_smithing_template", () -> BaseSmithingTemplateItem.createUpgradeTemplate("zurite"));
     public static final List<RegistryObject<Item>> ZURITE_TOOLS = registerTools("zurite", ModTiers.ZURITE, new float[]{5f, -3f, -4f, 0f}, new Item.Properties().fireResistant());
     public static final List<RegistryObject<Item>> ZURITE_ARMOR = registerArmor(ModMaterials.ZURITE, new Item.Properties().fireResistant());
     public static final RegistryObject<Item> TRAVELER_RELIC_FRAGMENT = registerItem("traveler_relic_fragment", () -> new TravelerRelicItem(true, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
@@ -39,7 +39,7 @@ public class ModContent {
 
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> supplier, Item.Properties itemProp) {
         var blockReg = registerBlock(name, supplier);
-        registerItem(name, () -> new BlockItem(blockReg.get(), itemProp.tab(TAB_KURO_MATERIALS)));
+        registerItem(name, () -> new BlockItem(blockReg.get(), itemProp));
         return blockReg;
     }
 
@@ -53,21 +53,21 @@ public class ModContent {
 
     private static List<RegistryObject<Item>> registerTools(String name, Tier tier, float[] attr, Item.Properties itemProp) {
         return List.of(
-                registerItem(name + "_sword", () -> new SwordItem(tier, 3, -2.4f, itemProp.tab(TAB_KURO_MATERIALS))),
-                registerItem(name + "_pickaxe", () -> new PickaxeItem(tier, 1, -2.8f, itemProp.tab(TAB_KURO_MATERIALS))),
-                registerItem(name + "_axe", () -> new AxeItem(tier, attr[0], attr[1], itemProp.tab(TAB_KURO_MATERIALS))),
-                registerItem(name + "_shovel", () -> new ShovelItem(tier, 1.5f, -3f, itemProp.tab(TAB_KURO_MATERIALS))),
-                registerItem(name + "_hoe", () -> new HoeItem(tier, (int) attr[2], attr[3], itemProp.tab(TAB_KURO_MATERIALS)))
+                registerItem(name + "_sword", () -> new SwordItem(tier, 3, -2.4f, itemProp)),
+                registerItem(name + "_pickaxe", () -> new PickaxeItem(tier, 1, -2.8f, itemProp)),
+                registerItem(name + "_axe", () -> new AxeItem(tier, attr[0], attr[1], itemProp)),
+                registerItem(name + "_shovel", () -> new ShovelItem(tier, 1.5f, -3f, itemProp)),
+                registerItem(name + "_hoe", () -> new HoeItem(tier, (int) attr[2], attr[3], itemProp))
         );
     }
 
     private static List<RegistryObject<Item>> registerArmor(ArmorMaterial material, Item.Properties itemProp) {
         String name = material.getName().substring(material.getName().indexOf(ResourceLocation.NAMESPACE_SEPARATOR) + 1);
         return List.of(
-                registerItem(name + "_helmet", () -> new BaseArmorItem(material, EquipmentSlot.HEAD, itemProp)),
-                registerItem(name + "_chestplate", () -> new BaseArmorItem(material, EquipmentSlot.CHEST, itemProp)),
-                registerItem(name + "_leggings", () -> new BaseArmorItem(material, EquipmentSlot.LEGS, itemProp)),
-                registerItem(name + "_boots", () -> new BaseArmorItem(material, EquipmentSlot.FEET, itemProp))
+                registerItem(name + "_helmet", () -> new BaseArmorItem(material, Type.HELMET, itemProp)),
+                registerItem(name + "_chestplate", () -> new BaseArmorItem(material, Type.CHESTPLATE, itemProp)),
+                registerItem(name + "_leggings", () -> new BaseArmorItem(material, Type.LEGGINGS, itemProp)),
+                registerItem(name + "_boots", () -> new BaseArmorItem(material, Type.BOOTS, itemProp))
         );
     }
 

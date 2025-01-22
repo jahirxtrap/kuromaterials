@@ -2,6 +2,12 @@
   "block.kuromaterials.zurite_block": "Bloque de zurita",
   "block.kuromaterials.anchor_stone": "Piedra de anclaje",
   "item.kuromaterials.zurite_ingot": "Lingote de zurita",
+  "item.kuromaterials.zurite_upgrade_smithing_template": "Molde de herrería",
+  "upgrade.kuromaterials.zurite_upgrade": "Mejora de zurita",
+  "item.kuromaterials.smithing_template.zurite_upgrade.additions_slot_description": "Pon un lingote de zurita aquí",
+  "item.kuromaterials.smithing_template.zurite_upgrade.applies_to": "Equipamiento de hierro",
+  "item.kuromaterials.smithing_template.zurite_upgrade.base_slot_description": "Pon una parte de armadura, arma o herramienta de hierro aquí",
+  "item.kuromaterials.smithing_template.zurite_upgrade.ingredients": "Lingote de zurita",
   "item.kuromaterials.zurite_sword": "Espada de zurita",
   "item.kuromaterials.zurite_pickaxe": "Pico de zurita",
   "item.kuromaterials.zurite_axe": "Hacha de zurita",
@@ -15,6 +21,7 @@
   "item.kuromaterials.traveler_relic": "Reliquia del viajero",
   "item.kuromaterials.link_relic": "Reliquia de enlace",
   "itemGroup.kuromaterials.tab_kuromaterials": "Kuro Materials",
+  "trim_material.kuromaterials.zurite": "Incrustaciones de zurita",
   "kuromaterials.config.title": "Kuro Materials",
   "kuromaterials.link_relic.linked": "enlazado/a"
 }

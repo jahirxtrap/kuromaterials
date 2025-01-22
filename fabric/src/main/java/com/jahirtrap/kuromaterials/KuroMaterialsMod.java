@@ -3,6 +3,7 @@ package com.jahirtrap.kuromaterials;
 import com.jahirtrap.configlib.TXFConfig;
 import com.jahirtrap.kuromaterials.init.ModConfig;
 import com.jahirtrap.kuromaterials.init.ModContent;
+import com.jahirtrap.kuromaterials.init.ModTab;
 import net.fabricmc.api.ModInitializer;
 
 public class KuroMaterialsMod implements ModInitializer {
@@ -13,5 +14,6 @@ public class KuroMaterialsMod implements ModInitializer {
     public void onInitialize() {
         TXFConfig.init(MODID, ModConfig.class);
         ModContent.init();
+        ModTab.init();
     }
 }

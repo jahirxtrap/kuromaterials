@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:iron_chestplate"
+  },
+  "addition": {
+    "item": "kuromaterials:zurite_ingot"
+  },
+  "result": {
+    "item": "kuromaterials:zurite_chestplate"
+  },
+  "template": {
+    "item": "kuromaterials:zurite_upgrade_smithing_template"
+  }
+}

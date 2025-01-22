@@ -1,6 +1,6 @@
 package com.jahirtrap.kuromaterials.init;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -14,7 +14,7 @@ public class ModTags {
         TagKey<Item> ZURITE_INGOTS = create(new ResourceLocation("c:zurite_ingots"));
 
         private static TagKey<Item> create(ResourceLocation name) {
-            return TagKey.create(Registry.ITEM_REGISTRY, name);
+            return TagKey.create(Registries.ITEM, name);
         }
     }
 
@@ -22,7 +22,7 @@ public class ModTags {
         TagKey<Block> ANCHOR_BLOCKS = create(new ResourceLocation(MODID, "anchor_blocks"));
 
         private static TagKey<Block> create(ResourceLocation name) {
-            return TagKey.create(Registry.BLOCK_REGISTRY, name);
+            return TagKey.create(Registries.BLOCK, name);
         }
     }
 }

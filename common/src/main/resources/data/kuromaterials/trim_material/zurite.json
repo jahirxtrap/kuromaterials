@@ -1,0 +1,9 @@
+{
+  "asset_name": "zurite",
+  "description": {
+    "color": "#787F88",
+    "translate": "trim_material.kuromaterials.zurite"
+  },
+  "ingredient": "kuromaterials:zurite_ingot",
+  "item_model_index": 0.3
+}

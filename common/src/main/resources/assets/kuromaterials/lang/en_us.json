@@ -2,6 +2,12 @@
   "block.kuromaterials.zurite_block": "Zurite Block",
   "block.kuromaterials.anchor_stone": "Anchor Stone",
   "item.kuromaterials.zurite_ingot": "Zurite Ingot",
+  "item.kuromaterials.zurite_upgrade_smithing_template": "Smithing Template",
+  "upgrade.kuromaterials.zurite_upgrade": "Zurite Upgrade",
+  "item.kuromaterials.smithing_template.zurite_upgrade.additions_slot_description": "Put a Zurite Ingot here",
+  "item.kuromaterials.smithing_template.zurite_upgrade.applies_to": "Iron Equipment",
+  "item.kuromaterials.smithing_template.zurite_upgrade.base_slot_description": "Put a piece of Iron armor, weapon, or tool here",
+  "item.kuromaterials.smithing_template.zurite_upgrade.ingredients": "Zurite Ingot",
   "item.kuromaterials.zurite_sword": "Zurite Sword",
   "item.kuromaterials.zurite_pickaxe": "Zurite Pickaxe",
   "item.kuromaterials.zurite_axe": "Zurite Axe",
@@ -15,6 +21,7 @@
   "item.kuromaterials.traveler_relic": "Traveler's Stone",
   "item.kuromaterials.link_relic": "Link Stone",
   "itemGroup.kuromaterials.tab_kuromaterials": "Kuro Materials",
+  "trim_material.kuromaterials.zurite": "Zurite Material",
   "kuromaterials.config.title": "Kuro Materials",
   "kuromaterials.link_relic.linked": "linked"
 }

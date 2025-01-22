@@ -9,7 +9,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.RelativeMovement;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
@@ -20,7 +22,7 @@ import java.util.List;
 
 import static com.jahirtrap.kuromaterials.util.CommonUtils.coloredTextComponent;
 
-public class LinkRelicItem extends BaseItem {
+public class LinkRelicItem extends Item {
     private static final String PLAYER_NAME_KEY = "PlayerName";
 
     public LinkRelicItem(Properties properties) {
@@ -38,7 +40,7 @@ public class LinkRelicItem extends BaseItem {
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (!player.getCooldowns().isOnCooldown(stack.getItem()) && target instanceof Player targetPlayer) {
             setPlayerName(player.getItemInHand(hand), targetPlayer.getName().getString(), player);
-            targetPlayer.getLevel().playSound(null, targetPlayer.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 1, 1);
+            targetPlayer.getLevel().playSound(null, targetPlayer.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS);
             return InteractionResult.SUCCESS;
         }
 
@@ -57,13 +59,12 @@ public class LinkRelicItem extends BaseItem {
 
                 if (serverLevel != null) {
                     if (level.dimension() != targetDimension)
-                        serverPlayer.teleportTo(level.getServer().getLevel(targetDimension), targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5, serverPlayer.getYRot(), serverPlayer.getXRot());
+                        serverPlayer.teleportTo(level.getServer().getLevel(targetDimension), targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5, RelativeMovement.ALL, serverPlayer.getYRot(), serverPlayer.getXRot());
                     serverPlayer.teleportTo(targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5);
 
-                    serverLevel.playSound(null, serverPlayer.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1, 1);
+                    serverLevel.playSound(null, serverPlayer.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS);
                 }
-            } else
-                level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 1, 1);
+            } else level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS);
 
             serverPlayer.getCooldowns().addCooldown(stack.getItem(), 30);
         }
@@ -82,8 +83,7 @@ public class LinkRelicItem extends BaseItem {
     }
 
     private void setPlayerName(ItemStack stack, String name, Player player) {
-        ItemStack result = stack.copy();
-        result.setCount(1);
+        ItemStack result = stack.copyWithCount(1);
         result.getOrCreateTag().putString(PLAYER_NAME_KEY, name);
 
         if (!player.getAbilities().instabuild && stack.getCount() == 1) {
