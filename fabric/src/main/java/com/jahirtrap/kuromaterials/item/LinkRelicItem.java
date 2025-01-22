@@ -40,7 +40,7 @@ public class LinkRelicItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (!player.getCooldowns().isOnCooldown(stack.getItem()) && target instanceof Player targetPlayer) {
             setPlayerName(player.getItemInHand(hand), targetPlayer.getName().getString(), player);
-            targetPlayer.getLevel().playSound(null, targetPlayer.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS);
+            targetPlayer.level().playSound(null, targetPlayer.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS);
             return InteractionResult.SUCCESS;
         }
 
@@ -53,7 +53,7 @@ public class LinkRelicItem extends Item {
             var targetPlayer = level.getServer().getPlayerList().getPlayerByName(getPlayerName(stack));
 
             if (targetPlayer != null && targetPlayer != serverPlayer) {
-                var targetDimension = targetPlayer.getLevel().dimension();
+                var targetDimension = targetPlayer.level().dimension();
                 var targetPos = targetPlayer.blockPosition();
                 var serverLevel = level.getServer() != null ? level.getServer().getLevel(targetDimension) : null;
 

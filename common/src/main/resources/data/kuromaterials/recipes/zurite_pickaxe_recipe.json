@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "minecraft:iron_pickaxe"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "kuromaterials:zurite_pickaxe"
+  },
+  "template": {
+    "item": "kuromaterials:zurite_upgrade_smithing_template"
   }
 }
