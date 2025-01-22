@@ -63,7 +63,7 @@ public class ModContent {
     }
 
     private static List<DeferredItem<Item>> registerArmor(ArmorMaterial material, Item.Properties itemProp) {
-        String name = material.modelId().getPath();
+        String name = material.assetId().location().getPath();
         return List.of(
                 registerItem(name + "_helmet", (p) -> new ArmorItem(material, ArmorType.HELMET, p), itemProp),
                 registerItem(name + "_chestplate", (p) -> new ArmorItem(material, ArmorType.CHESTPLATE, p), itemProp),
