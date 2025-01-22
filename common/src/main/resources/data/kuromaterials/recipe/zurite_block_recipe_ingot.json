@@ -6,9 +6,7 @@
     "III"
   ],
   "key": {
-    "I": {
-      "item": "kuromaterials:zurite_ingot"
-    }
+    "I": "kuromaterials:zurite_ingot"
   },
   "result": {
     "id": "kuromaterials:zurite_block",

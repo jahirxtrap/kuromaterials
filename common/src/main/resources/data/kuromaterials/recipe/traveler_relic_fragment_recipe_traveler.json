@@ -1,9 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "kuromaterials:traveler_relic"
-    }
+    "kuromaterials:traveler_relic"
   ],
   "result": {
     "id": "kuromaterials:traveler_relic_fragment",

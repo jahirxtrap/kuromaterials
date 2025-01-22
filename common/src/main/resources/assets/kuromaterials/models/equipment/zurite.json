@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "kuromaterials:zurite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "kuromaterials:zurite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "kuromaterials:zurite"
+      }
+    ]
+  }
+}

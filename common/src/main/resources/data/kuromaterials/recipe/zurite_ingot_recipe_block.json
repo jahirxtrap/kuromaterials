@@ -1,9 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "kuromaterials:zurite_block"
-    }
+    "kuromaterials:zurite_block"
   ],
   "result": {
     "id": "kuromaterials:zurite_ingot",

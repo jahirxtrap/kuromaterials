@@ -6,12 +6,8 @@
     "BBB"
   ],
   "key": {
-    "B": {
-      "item": "minecraft:polished_blackstone"
-    },
-    "I": {
-      "item": "kuromaterials:zurite_ingot"
-    }
+    "B": "minecraft:polished_blackstone",
+    "I": "kuromaterials:zurite_ingot"
   },
   "result": {
     "id": "kuromaterials:anchor_stone",

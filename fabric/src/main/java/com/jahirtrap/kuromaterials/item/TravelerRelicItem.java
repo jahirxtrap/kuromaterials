@@ -14,14 +14,13 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.RelativeMovement;
+import net.minecraft.world.entity.Relative;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 
@@ -35,12 +34,12 @@ public class TravelerRelicItem extends Item {
     private final boolean fragment;
 
     public TravelerRelicItem(boolean fragment, Properties properties) {
-        super(properties.stacksTo(16));
+        super(properties.stacksTo(16).useCooldown(1.5f));
         this.fragment = fragment;
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         BlockPos pos = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE).getBlockPos();
         boolean anchor = level.getBlockState(pos).is(ModTags.Blocks.ANCHOR_BLOCKS);
@@ -50,7 +49,7 @@ public class TravelerRelicItem extends Item {
 
             setGlobalPos(stack, level.dimension(), targetPos, player, hand);
             level.playSound(null, anchor ? targetPos.below() : targetPos, SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS);
-            return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
+            return InteractionResult.SUCCESS_SERVER;
         } else if (!level.isClientSide() && getGlobalPos(stack) != null) player.startUsingItem(hand);
 
         return super.use(level, player, hand);
@@ -65,13 +64,11 @@ public class TravelerRelicItem extends Item {
 
             if (serverLevel != null && (!fragment || serverLevel.getBlockState(targetPos.below()).is(ModTags.Blocks.ANCHOR_BLOCKS))) {
                 if (level.dimension() != targetDimension)
-                    serverPlayer.teleportTo(level.getServer().getLevel(targetDimension), targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5, RelativeMovement.ALL, serverPlayer.getYRot(), serverPlayer.getXRot());
+                    serverPlayer.teleportTo(level.getServer().getLevel(targetDimension), targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5, Relative.ALL, serverPlayer.getYRot(), serverPlayer.getXRot(), true);
                 serverPlayer.teleportTo(targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5);
 
                 serverLevel.playSound(null, serverPlayer.blockPosition(), SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
             } else level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS);
-
-            serverPlayer.getCooldowns().addCooldown(stack.getItem(), 30);
         }
 
         return super.finishUsingItem(stack, level, entity);
@@ -110,7 +107,7 @@ public class TravelerRelicItem extends Item {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.BOW;
     }
 }

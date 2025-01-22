@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "base": {
-    "item": "minecraft:iron_sword"
-  },
-  "addition": {
-    "item": "kuromaterials:zurite_ingot"
-  },
+  "base": "minecraft:iron_sword",
+  "addition": "kuromaterials:zurite_ingot",
   "result": {
     "id": "kuromaterials:zurite_sword"
   },
-  "template": {
-    "item": "kuromaterials:zurite_upgrade_smithing_template"
-  }
+  "template": "kuromaterials:zurite_upgrade_smithing_template"
 }
