@@ -1,9 +1,7 @@
 package com.jahirtrap.kuromaterials;
 
 import com.jahirtrap.configlib.TXFConfig;
-import com.jahirtrap.kuromaterials.init.ModConfig;
-import com.jahirtrap.kuromaterials.init.ModContent;
-import com.jahirtrap.kuromaterials.init.ModTab;
+import com.jahirtrap.kuromaterials.init.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -13,10 +11,12 @@ public class KuroMaterialsMod {
 
     public static final String MODID = "kuromaterials";
 
-    public KuroMaterialsMod() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    public KuroMaterialsMod(FMLJavaModLoadingContext context) {
+        IEventBus bus = context.getModEventBus();
 
         TXFConfig.init(MODID, ModConfig.class);
+        ModComponents.init(bus);
+        ModMaterials.init(bus);
         ModContent.init(bus);
         ModTab.init(bus);
     }

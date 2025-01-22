@@ -1,12 +1,12 @@
 package com.jahirtrap.kuromaterials.item;
 
+import com.jahirtrap.kuromaterials.init.ModComponents;
 import com.jahirtrap.kuromaterials.init.ModTags;
-import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.NbtUtils;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,17 +24,14 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.jahirtrap.kuromaterials.util.CommonUtils.coloredTextComponent;
 import static com.jahirtrap.kuromaterials.util.CommonUtils.snakeToTitleCase;
 
 public class TravelerRelicItem extends Item {
-    private static final String DIM_KEY = "RelicDim";
-    private static final String POS_KEY = "RelicPos";
+    private static final DataComponentType<GlobalPos> GLOBAL_POS_KEY = ModComponents.GLOBAL_POS_KEY.get();
     private final boolean fragment;
 
     public TravelerRelicItem(boolean fragment, Properties properties) {
@@ -81,28 +78,26 @@ public class TravelerRelicItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        if (stack.getOrCreateTag().contains(DIM_KEY) && stack.getOrCreateTag().contains(POS_KEY)) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        if (getGlobalPos(stack) != null) {
             var targetPos = getGlobalPos(stack).pos();
             tooltip.add(coloredTextComponent((snakeToTitleCase(getGlobalPos(stack).dimension().location().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]"), ChatFormatting.GRAY));
         }
     }
 
     private GlobalPos getGlobalPos(ItemStack stack) {
-        List<ResourceKey<Level>> dimension = new ArrayList<>();
-        Level.RESOURCE_KEY_CODEC.decode(NbtOps.INSTANCE, stack.getOrCreateTag().get(DIM_KEY)).resultOrPartial(LogUtils.getLogger()::error).ifPresent((dim) -> dimension.add(dim.getFirst()));
-        return GlobalPos.of(dimension.get(0), NbtUtils.readBlockPos(stack.getOrCreateTag().getCompound(POS_KEY)));
+        return stack.get(GLOBAL_POS_KEY);
     }
 
     private void setGlobalPos(ItemStack stack, ResourceKey<Level> targetDimension, BlockPos targetPos, Player player, InteractionHand hand) {
         ItemStack result = stack.copyWithCount(1);
-        Level.RESOURCE_KEY_CODEC.encodeStart(NbtOps.INSTANCE, targetDimension).resultOrPartial(LogUtils.getLogger()::error).ifPresent((dim) -> result.getOrCreateTag().put(DIM_KEY, dim));
-        result.getOrCreateTag().put(POS_KEY, NbtUtils.writeBlockPos(targetPos));
+        result.set(GLOBAL_POS_KEY, new GlobalPos(targetDimension, targetPos));
+        result.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
 
-        if (!player.getAbilities().instabuild && stack.getCount() == 1) {
-            stack.setTag(result.getTag());
+        if (!player.hasInfiniteMaterials() && stack.getCount() == 1) {
+            stack.applyComponents(result.getComponents());
         } else {
-            if (!player.getAbilities().instabuild) stack.shrink(1);
+            stack.consume(1, player);
             if (!player.getInventory().add(result)) player.drop(result, false);
         }
 
@@ -117,10 +112,5 @@ public class TravelerRelicItem extends Item {
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return stack.getOrCreateTag().contains(DIM_KEY) && stack.getOrCreateTag().contains(POS_KEY);
     }
 }

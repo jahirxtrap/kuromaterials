@@ -1,9 +1,7 @@
 package com.jahirtrap.kuromaterials;
 
 import com.jahirtrap.configlib.TXFConfig;
-import com.jahirtrap.kuromaterials.init.ModConfig;
-import com.jahirtrap.kuromaterials.init.ModContent;
-import com.jahirtrap.kuromaterials.init.ModTab;
+import com.jahirtrap.kuromaterials.init.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
@@ -14,6 +12,8 @@ public class KuroMaterialsMod {
 
     public KuroMaterialsMod(IEventBus bus) {
         TXFConfig.init(MODID, ModConfig.class);
+        ModComponents.init(bus);
+        ModMaterials.init(bus);
         ModContent.init(bus);
         ModTab.init(bus);
     }

@@ -1,6 +1,9 @@
 package com.jahirtrap.kuromaterials.item;
 
+import com.jahirtrap.kuromaterials.init.ModComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -16,14 +19,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 import static com.jahirtrap.kuromaterials.util.CommonUtils.coloredTextComponent;
 
 public class LinkRelicItem extends Item {
-    private static final String PLAYER_NAME_KEY = "PlayerName";
+    private static final DataComponentType<String> PLAYER_NAME_KEY = ModComponents.PLAYER_NAME_KEY.get();
 
     public LinkRelicItem(Properties properties) {
         super(properties.stacksTo(16));
@@ -73,23 +75,24 @@ public class LinkRelicItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        if (!getPlayerName(stack).isBlank())
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        if (getPlayerName(stack) != null)
             tooltip.add(coloredTextComponent(getPlayerName(stack) + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GRAY));
     }
 
     private String getPlayerName(ItemStack stack) {
-        return stack.getOrCreateTag().getString(PLAYER_NAME_KEY);
+        return stack.get(PLAYER_NAME_KEY);
     }
 
     private void setPlayerName(ItemStack stack, String name, Player player) {
         ItemStack result = stack.copyWithCount(1);
-        result.getOrCreateTag().putString(PLAYER_NAME_KEY, name);
+        result.set(PLAYER_NAME_KEY, name);
+        result.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
 
-        if (!player.getAbilities().instabuild && stack.getCount() == 1) {
-            stack.setTag(result.getTag());
+        if (!player.hasInfiniteMaterials() && stack.getCount() == 1) {
+            stack.applyComponents(result.getComponents());
         } else {
-            if (!player.getAbilities().instabuild) stack.shrink(1);
+            stack.consume(1, player);
             if (!player.getInventory().add(result)) player.drop(result, false);
         }
 
@@ -104,10 +107,5 @@ public class LinkRelicItem extends Item {
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return stack.getOrCreateTag().contains(PLAYER_NAME_KEY);
     }
 }

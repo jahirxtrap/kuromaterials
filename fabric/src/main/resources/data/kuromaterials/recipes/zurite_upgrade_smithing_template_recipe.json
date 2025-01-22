@@ -7,17 +7,17 @@
   ],
   "key": {
     "I": {
-      "tag": "c:iron_ingots"
+      "tag": "c:ingots/iron"
     },
     "L": {
-      "tag": "c:lapis"
+      "tag": "c:gems/lapis"
     },
     "B": {
       "item": "minecraft:blackstone"
     }
   },
   "result": {
-    "item": "kuromaterials:zurite_upgrade_smithing_template",
+    "id": "kuromaterials:zurite_upgrade_smithing_template",
     "count": 1
   }
 }

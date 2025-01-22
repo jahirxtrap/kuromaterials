@@ -7,7 +7,7 @@
     "item": "kuromaterials:zurite_ingot"
   },
   "result": {
-    "item": "kuromaterials:zurite_leggings"
+    "id": "kuromaterials:zurite_leggings"
   },
   "template": {
     "item": "kuromaterials:zurite_upgrade_smithing_template"

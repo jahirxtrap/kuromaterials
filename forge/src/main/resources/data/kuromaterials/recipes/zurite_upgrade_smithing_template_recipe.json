@@ -17,7 +17,7 @@
     }
   },
   "result": {
-    "item": "kuromaterials:zurite_upgrade_smithing_template",
+    "id": "kuromaterials:zurite_upgrade_smithing_template",
     "count": 1
   }
 }

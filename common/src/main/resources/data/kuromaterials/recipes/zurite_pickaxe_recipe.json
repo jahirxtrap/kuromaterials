@@ -7,7 +7,7 @@
     "item": "kuromaterials:zurite_ingot"
   },
   "result": {
-    "item": "kuromaterials:zurite_pickaxe"
+    "id": "kuromaterials:zurite_pickaxe"
   },
   "template": {
     "item": "kuromaterials:zurite_upgrade_smithing_template"

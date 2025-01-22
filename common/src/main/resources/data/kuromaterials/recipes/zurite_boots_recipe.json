@@ -7,7 +7,7 @@
     "item": "kuromaterials:zurite_ingot"
   },
   "result": {
-    "item": "kuromaterials:zurite_boots"
+    "id": "kuromaterials:zurite_boots"
   },
   "template": {
     "item": "kuromaterials:zurite_upgrade_smithing_template"

@@ -11,23 +11,23 @@
       "item": "minecraft:netherite_scrap"
     },
     {
-      "tag": "forge:gems/lapis"
+      "tag": "c:gems/lapis"
     },
     {
-      "tag": "forge:gems/lapis"
+      "tag": "c:gems/lapis"
     },
     {
-      "tag": "forge:ingots/iron"
+      "tag": "c:ingots/iron"
     },
     {
-      "tag": "forge:ingots/iron"
+      "tag": "c:ingots/iron"
     },
     {
-      "tag": "forge:ingots/iron"
+      "tag": "c:ingots/iron"
     }
   ],
   "result": {
-    "item": "kuromaterials:zurite_ingot",
+    "id": "kuromaterials:zurite_ingot",
     "count": 1
   }
 }

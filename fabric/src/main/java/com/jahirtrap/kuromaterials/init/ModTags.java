@@ -11,7 +11,7 @@ import static com.jahirtrap.kuromaterials.KuroMaterialsMod.MODID;
 public class ModTags {
     public interface Items {
         TagKey<Item> AUTOREPAIRABLE_ITEMS = create(new ResourceLocation(MODID, "autorepairable_items"));
-        TagKey<Item> ZURITE_INGOTS = create(new ResourceLocation("c:zurite_ingots"));
+        TagKey<Item> ZURITE_INGOTS = create(new ResourceLocation("c:ingots/zurite"));
 
         private static TagKey<Item> create(ResourceLocation name) {
             return TagKey.create(Registries.ITEM, name);
