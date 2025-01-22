@@ -2,11 +2,10 @@ package com.jahirtrap.kuromaterials.util;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 
 public class CommonUtils {
     public static Component coloredTextComponent(String string, ChatFormatting color) {
-        var textComponent = new TextComponent(string);
+        var textComponent = Component.literal(string);
         textComponent.withStyle(color);
         return textComponent;
     }

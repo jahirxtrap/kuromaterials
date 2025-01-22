@@ -2,7 +2,6 @@ package com.jahirtrap.kuromaterials.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -75,7 +74,7 @@ public class LinkRelicItem extends BaseItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if (!getPlayerName(stack).isBlank())
-            tooltip.add(coloredTextComponent(getPlayerName(stack) + " " + new TranslatableComponent("kuromaterials.link_relic.linked").getString(), ChatFormatting.GRAY));
+            tooltip.add(coloredTextComponent(getPlayerName(stack) + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GRAY));
     }
 
     private String getPlayerName(ItemStack stack) {
@@ -94,7 +93,7 @@ public class LinkRelicItem extends BaseItem {
             if (!player.getInventory().add(result)) player.drop(result, false);
         }
 
-        player.displayClientMessage(coloredTextComponent(name + " " + new TranslatableComponent("kuromaterials.link_relic.linked").getString(), ChatFormatting.GOLD), true);
+        player.displayClientMessage(coloredTextComponent(name + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GOLD), true);
     }
 
     @Override
