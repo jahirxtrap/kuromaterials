@@ -15,7 +15,7 @@ public class ModComponents {
     public static final DataComponentType<String> PLAYER_NAME_KEY = register("player_name", DataComponentType.<String>builder().persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8).build());
 
     private static <T> DataComponentType<T> register(String name, DataComponentType<T> component) {
-        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, new ResourceLocation(MODID, name), component);
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath(MODID, name), component);
     }
 
     public static void init() {

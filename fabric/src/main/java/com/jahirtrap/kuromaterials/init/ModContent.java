@@ -40,11 +40,11 @@ public class ModContent {
     }
 
     private static Block registerBlock(String name, Block block) {
-        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MODID, name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(MODID, name), block);
     }
 
     private static Item registerItem(String name, Item item) {
-        var itemReg = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(MODID, name), item);
+        var itemReg = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name), item);
         ITEMS.add(itemReg);
         return itemReg;
     }

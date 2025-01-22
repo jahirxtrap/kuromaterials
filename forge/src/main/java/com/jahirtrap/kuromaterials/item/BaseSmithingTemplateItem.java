@@ -21,11 +21,11 @@ public class BaseSmithingTemplateItem extends SmithingTemplateItem {
 
     private static Component[] createComponents(String key) {
         return new Component[]{
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(MODID, String.format("smithing_template.%s_upgrade.applies_to", key)))).withStyle(SmithingTemplateItem.DESCRIPTION_FORMAT),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(MODID, String.format("smithing_template.%s_upgrade.ingredients", key)))).withStyle(SmithingTemplateItem.DESCRIPTION_FORMAT),
-                Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(MODID, String.format("%s_upgrade", key)))).withStyle(SmithingTemplateItem.TITLE_FORMAT),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(MODID, String.format("smithing_template.%s_upgrade.base_slot_description", key)))),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(MODID, String.format("smithing_template.%s_upgrade.additions_slot_description", key))))
+                Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(MODID, String.format("smithing_template.%s_upgrade.applies_to", key)))).withStyle(SmithingTemplateItem.DESCRIPTION_FORMAT),
+                Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(MODID, String.format("smithing_template.%s_upgrade.ingredients", key)))).withStyle(SmithingTemplateItem.DESCRIPTION_FORMAT),
+                Component.translatable(Util.makeDescriptionId("upgrade", ResourceLocation.fromNamespaceAndPath(MODID, String.format("%s_upgrade", key)))).withStyle(SmithingTemplateItem.TITLE_FORMAT),
+                Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(MODID, String.format("smithing_template.%s_upgrade.base_slot_description", key)))),
+                Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(MODID, String.format("smithing_template.%s_upgrade.additions_slot_description", key))))
         };
     }
 }

@@ -10,8 +10,8 @@ import static com.jahirtrap.kuromaterials.KuroMaterialsMod.MODID;
 
 public class ModTags {
     public interface Items {
-        TagKey<Item> AUTOREPAIRABLE_ITEMS = create(new ResourceLocation(MODID, "autorepairable_items"));
-        TagKey<Item> ZURITE_INGOTS = create(new ResourceLocation("forge:ingots/zurite"));
+        TagKey<Item> AUTOREPAIRABLE_ITEMS = create(ResourceLocation.fromNamespaceAndPath(MODID, "autorepairable_items"));
+        TagKey<Item> ZURITE_INGOTS = create(ResourceLocation.parse("c:ingots/zurite"));
 
         private static TagKey<Item> create(ResourceLocation name) {
             return TagKey.create(Registries.ITEM, name);
@@ -19,7 +19,7 @@ public class ModTags {
     }
 
     public interface Blocks {
-        TagKey<Block> ANCHOR_BLOCKS = create(new ResourceLocation(MODID, "anchor_blocks"));
+        TagKey<Block> ANCHOR_BLOCKS = create(ResourceLocation.fromNamespaceAndPath(MODID, "anchor_blocks"));
 
         private static TagKey<Block> create(ResourceLocation name) {
             return TagKey.create(Registries.BLOCK, name);

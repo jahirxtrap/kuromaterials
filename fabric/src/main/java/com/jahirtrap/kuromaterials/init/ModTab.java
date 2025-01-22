@@ -22,6 +22,6 @@ public class ModTab {
             .build();
 
     public static void init() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(MODID, "tab_kuromaterials"), TAB_KURO_MATERIALS);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MODID, "tab_kuromaterials"), TAB_KURO_MATERIALS);
     }
 }
