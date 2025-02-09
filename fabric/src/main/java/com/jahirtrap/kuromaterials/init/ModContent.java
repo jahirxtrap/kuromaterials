@@ -22,7 +22,7 @@ import static com.jahirtrap.kuromaterials.init.ModTab.TAB_KURO_MATERIALS;
 
 public class ModContent {
     public static final Item ZURITE_INGOT = registerItem("zurite_ingot", new BaseItem(new Item.Properties().fireResistant()));
-    public static final Block ZURITE_BLOCK = registerBlock("zurite_block", new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties().fireResistant());
+    public static final Block ZURITE_BLOCK = registerBlock("zurite_block", new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).color(MaterialColor.COLOR_GRAY)), new Item.Properties().fireResistant());
     public static final List<Item> ZURITE_TOOLS = registerTools("zurite", ModTiers.ZURITE, new float[]{5f, -3f, -4f, 0f}, new Item.Properties().fireResistant());
     public static final List<Item> ZURITE_ARMOR = registerArmor(ModMaterials.ZURITE, new Item.Properties().fireResistant());
     public static final Item TRAVELER_RELIC_FRAGMENT = registerItem("traveler_relic_fragment", new TravelerRelicItem(true, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
