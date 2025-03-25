@@ -48,7 +48,7 @@ public class TravelerRelicItem extends Item {
         BlockPos pos = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE).getBlockPos();
         boolean anchor = level.getBlockState(pos).is(ModTags.Blocks.ANCHOR_BLOCKS);
 
-        if (!level.isClientSide() && (anchor || player.isShiftKeyDown()) && (anchor || !fragment)) {
+        if (!level.isClientSide() && (anchor || player.isSecondaryUseActive()) && (anchor || !fragment)) {
             var targetPos = anchor ? pos.above() : player.blockPosition();
 
             setGlobalPos(stack, level.dimension(), targetPos, player, hand);
