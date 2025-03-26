@@ -17,9 +17,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 import static com.jahirtrap.kuromaterials.util.CommonUtils.coloredTextComponent;
 
@@ -65,16 +66,17 @@ public class LinkRelicItem extends Item {
 
                     serverLevel.playSound(null, serverPlayer.blockPosition(), SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
                 }
-            } else level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS);
+            } else
+                level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK.value(), SoundSource.PLAYERS);
         }
 
         return super.finishUsingItem(stack, level, entity);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
         if (getPlayerName(stack) != null)
-            tooltip.add(coloredTextComponent(getPlayerName(stack) + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GRAY));
+            tooltip.accept(coloredTextComponent(getPlayerName(stack) + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GRAY));
     }
 
     private String getPlayerName(ItemStack stack) {

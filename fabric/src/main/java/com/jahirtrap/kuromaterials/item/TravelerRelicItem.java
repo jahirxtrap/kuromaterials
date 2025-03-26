@@ -21,10 +21,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 import static com.jahirtrap.kuromaterials.util.CommonUtils.coloredTextComponent;
 import static com.jahirtrap.kuromaterials.util.CommonUtils.snakeToTitleCase;
@@ -68,17 +69,18 @@ public class TravelerRelicItem extends Item {
                 serverPlayer.teleportTo(targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5);
 
                 serverLevel.playSound(null, serverPlayer.blockPosition(), SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
-            } else level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS);
+            } else
+                level.playSound(null, serverPlayer.blockPosition(), SoundEvents.ITEM_BREAK.value(), SoundSource.PLAYERS);
         }
 
         return super.finishUsingItem(stack, level, entity);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
         if (getGlobalPos(stack) != null) {
             var targetPos = getGlobalPos(stack).pos();
-            tooltip.add(coloredTextComponent((snakeToTitleCase(getGlobalPos(stack).dimension().location().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]"), ChatFormatting.GRAY));
+            tooltip.accept(coloredTextComponent((snakeToTitleCase(getGlobalPos(stack).dimension().location().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]"), ChatFormatting.GRAY));
         }
     }
 
