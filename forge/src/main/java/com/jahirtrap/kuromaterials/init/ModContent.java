@@ -53,8 +53,8 @@ public class ModContent {
 
     private static List<RegistryObject<Item>> registerTools(String name, ToolMaterial material, float[] attr, Item.Properties itemProp) {
         return List.of(
-                registerItem(name + "_sword", (p) -> new SwordItem(material, 3f, -2.4f, p), itemProp),
-                registerItem(name + "_pickaxe", (p) -> new PickaxeItem(material, 1f, -2.8f, p), itemProp),
+                registerItem(name + "_sword", (p) -> new Item(p.sword(material, 3f, -2.4f)), itemProp),
+                registerItem(name + "_pickaxe", (p) -> new Item(p.pickaxe(material, 1f, -2.8f)), itemProp),
                 registerItem(name + "_axe", (p) -> new AxeItem(material, attr[0], attr[1], p), itemProp),
                 registerItem(name + "_shovel", (p) -> new ShovelItem(material, 1.5f, -3f, p), itemProp),
                 registerItem(name + "_hoe", (p) -> new HoeItem(material, attr[2], attr[3], p), itemProp)
@@ -64,10 +64,10 @@ public class ModContent {
     private static List<RegistryObject<Item>> registerArmor(ArmorMaterial material, Item.Properties itemProp) {
         String name = material.assetId().location().getPath();
         return List.of(
-                registerItem(name + "_helmet", (p) -> new ArmorItem(material, ArmorType.HELMET, p), itemProp),
-                registerItem(name + "_chestplate", (p) -> new ArmorItem(material, ArmorType.CHESTPLATE, p), itemProp),
-                registerItem(name + "_leggings", (p) -> new ArmorItem(material, ArmorType.LEGGINGS, p), itemProp),
-                registerItem(name + "_boots", (p) -> new ArmorItem(material, ArmorType.BOOTS, p), itemProp)
+                registerItem(name + "_helmet", (p) -> new Item(p.humanoidArmor(material, ArmorType.HELMET)), itemProp),
+                registerItem(name + "_chestplate", (p) -> new Item(p.humanoidArmor(material, ArmorType.CHESTPLATE)), itemProp),
+                registerItem(name + "_leggings", (p) -> new Item(p.humanoidArmor(material, ArmorType.LEGGINGS)), itemProp),
+                registerItem(name + "_boots", (p) -> new Item(p.humanoidArmor(material, ArmorType.BOOTS)), itemProp)
         );
     }
 
