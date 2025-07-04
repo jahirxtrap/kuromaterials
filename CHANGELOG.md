@@ -1,1 +1,1 @@
-- Update to 1.21.5
+- Added Russian translations ([Issue #2](https://github.com/jahirxtrap/kuromaterials/issues/2))
