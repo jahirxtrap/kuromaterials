@@ -1,7 +1,7 @@
 package com.jahirtrap.kuromaterials.init;
 
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ToolMaterial;
@@ -26,7 +26,7 @@ public class ModMaterials {
         }
 
         private static ResourceKey<EquipmentAsset> createAsset(String name) {
-            return ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MODID, name));
+            return ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MODID, name));
         }
     }
 

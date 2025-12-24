@@ -80,7 +80,7 @@ public class TravelerRelicItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
         if (getGlobalPos(stack) != null) {
             var targetPos = getGlobalPos(stack).pos();
-            tooltip.accept(coloredTextComponent((snakeToTitleCase(getGlobalPos(stack).dimension().location().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]"), ChatFormatting.GRAY));
+            tooltip.accept(coloredTextComponent((snakeToTitleCase(getGlobalPos(stack).dimension().identifier().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]"), ChatFormatting.GRAY));
         }
     }
 
@@ -100,7 +100,7 @@ public class TravelerRelicItem extends Item {
             if (!player.getInventory().add(result)) player.drop(result, false);
         }
 
-        player.displayClientMessage(coloredTextComponent(snakeToTitleCase(targetDimension.location().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]", ChatFormatting.GOLD), true);
+        player.displayClientMessage(coloredTextComponent(snakeToTitleCase(targetDimension.identifier().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]", ChatFormatting.GOLD), true);
     }
 
     @Override

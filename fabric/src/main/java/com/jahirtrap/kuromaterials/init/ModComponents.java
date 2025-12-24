@@ -6,7 +6,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import static com.jahirtrap.kuromaterials.KuroMaterialsMod.MODID;
 
@@ -15,7 +15,7 @@ public class ModComponents {
     public static final DataComponentType<String> PLAYER_NAME_KEY = register("player_name", DataComponentType.<String>builder().persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8).build());
 
     private static <T> DataComponentType<T> register(String name, DataComponentType<T> component) {
-        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath(MODID, name), component);
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Identifier.fromNamespaceAndPath(MODID, name), component);
     }
 
     public static void init() {

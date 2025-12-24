@@ -5,7 +5,7 @@ import com.jahirtrap.kuromaterials.item.LinkRelicItem;
 import com.jahirtrap.kuromaterials.item.TravelerRelicItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -45,11 +45,11 @@ public class ModContent {
     }
 
     private static DeferredBlock<Block> registerBlock(String name, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties blockProp) {
-        return BLOCKS.register(name, () -> function.apply(blockProp.setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MODID, name)))));
+        return BLOCKS.register(name, () -> function.apply(blockProp.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MODID, name)))));
     }
 
     private static DeferredItem<Item> registerItem(String name, Function<Item.Properties, Item> function, Item.Properties itemProp) {
-        return ITEMS.register(name, () -> function.apply(itemProp.setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name)))));
+        return ITEMS.register(name, () -> function.apply(itemProp.setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MODID, name)))));
     }
 
     private static List<DeferredItem<Item>> registerTools(String name, ToolMaterial material, float[] attr, Item.Properties itemProp) {
@@ -63,7 +63,7 @@ public class ModContent {
     }
 
     private static List<DeferredItem<Item>> registerArmor(ArmorMaterial material, Item.Properties itemProp) {
-        String name = material.assetId().location().getPath();
+        String name = material.assetId().identifier().getPath();
         return List.of(
                 registerItem(name + "_helmet", (p) -> new Item(p.humanoidArmor(material, ArmorType.HELMET)), itemProp),
                 registerItem(name + "_chestplate", (p) -> new Item(p.humanoidArmor(material, ArmorType.CHESTPLATE)), itemProp),
