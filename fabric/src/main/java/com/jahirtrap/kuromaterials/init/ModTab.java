@@ -1,6 +1,5 @@
 package com.jahirtrap.kuromaterials.init;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -12,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import static com.jahirtrap.kuromaterials.KuroMaterialsMod.MODID;
 
 public class ModTab {
-    public static final CreativeModeTab TAB_KURO_MATERIALS = FabricItemGroup.builder()
+    public static final CreativeModeTab TAB_KURO_MATERIALS = CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
             .icon(() -> new ItemStack(ModContent.ZURITE_INGOT))
             .displayItems((features, event) -> {
                 for (Item item : ModContent.ITEMS)

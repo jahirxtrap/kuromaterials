@@ -100,7 +100,7 @@ public class TravelerRelicItem extends Item {
             if (!player.getInventory().add(result)) player.drop(result, false);
         }
 
-        player.displayClientMessage(coloredTextComponent(snakeToTitleCase(targetDimension.identifier().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]", ChatFormatting.GOLD), true);
+        player.sendOverlayMessage(coloredTextComponent(snakeToTitleCase(targetDimension.identifier().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]", ChatFormatting.GOLD));
     }
 
     @Override

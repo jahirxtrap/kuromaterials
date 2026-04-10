@@ -95,7 +95,7 @@ public class LinkRelicItem extends Item {
             if (!player.getInventory().add(result)) player.drop(result, false);
         }
 
-        player.displayClientMessage(coloredTextComponent(name + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GOLD), true);
+        player.sendOverlayMessage(coloredTextComponent(name + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GOLD));
     }
 
     @Override
