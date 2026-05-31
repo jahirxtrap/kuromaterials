@@ -1,1 +1,1 @@
-- Added Russian translations ([Issue #2](https://github.com/jahirxtrap/kuromaterials/issues/2))
+- Updated config lib
