@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -92,7 +93,7 @@ public class LinkRelicItem extends Item {
             stack.applyComponents(result.getComponents());
         } else {
             stack.consume(1, player);
-            if (!player.getInventory().add(result)) player.drop(result, false);
+            if (!player.getInventory().add(result)) player.drop(result, false, Prediction.SERVER_ONLY);
         }
 
         player.sendOverlayMessage(coloredTextComponent(name + " " + Component.translatable("kuromaterials.link_relic.linked").getString(), ChatFormatting.GOLD));

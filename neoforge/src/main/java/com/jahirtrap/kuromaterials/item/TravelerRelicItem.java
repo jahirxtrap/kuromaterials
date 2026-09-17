@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -97,7 +98,7 @@ public class TravelerRelicItem extends Item {
             stack.applyComponents(result.getComponents());
         } else {
             stack.consume(1, player);
-            if (!player.getInventory().add(result)) player.drop(result, false);
+            if (!player.getInventory().add(result)) player.drop(result, false, Prediction.SERVER_ONLY);
         }
 
         player.sendOverlayMessage(coloredTextComponent(snakeToTitleCase(targetDimension.identifier().getPath()) + " [" + targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ() + "]", ChatFormatting.GOLD));

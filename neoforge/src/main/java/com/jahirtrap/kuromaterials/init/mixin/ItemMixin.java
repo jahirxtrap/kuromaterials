@@ -21,7 +21,7 @@ public abstract class ItemMixin {
         if (!level.isClientSide() && stack.is(ModTags.Items.AUTOREPAIRABLE_ITEMS) && stack.isDamaged()) {
             if (!(ModConfig.itemAutorepairInterval <= 0) && level.getGameTime() % ModConfig.itemAutorepairInterval == 0) {
                 if (entity instanceof Player player)
-                    if ((player.getUseItem() == stack) || (player.swinging && player.getItemInHand(player.swingingArm) == stack))
+                    if ((player.getUseItem() == stack) || (player.isSwinging() && player.getItemInHand(player.getCurrentSwing().hand()) == stack))
                         return;
                 stack.setDamageValue(stack.getDamageValue() - ModConfig.itemAutorepairAmount);
             }
